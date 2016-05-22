@@ -6,10 +6,7 @@ import com.kensuka21.api.shortenerlink.service.ShortenerLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +17,7 @@ import java.util.Optional;
  * Created by kesalcedo on 5/20/2016.
  */
 @RestController
+@CrossOrigin(maxAge = 3600)
 public class ShortenerLinkResource {
 
     @Autowired

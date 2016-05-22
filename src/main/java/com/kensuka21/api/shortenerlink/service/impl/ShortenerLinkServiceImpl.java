@@ -18,7 +18,7 @@ import java.util.UUID;
  * Created by kesalcedo on 5/20/2016.
  */
 @Service("shortenerLinkService")
-public class ShortenerLinkServiceImpl implements ShortenerLinkService{
+public class ShortenerLinkServiceImpl implements ShortenerLinkService {
 
     @Autowired
     private ShortenerLinkRepository shortenerLinkRepository;
@@ -66,13 +66,9 @@ public class ShortenerLinkServiceImpl implements ShortenerLinkService{
         dto.setUniqueKey(uniqueKey);
         Optional<ShortenerLink> shortenerLink = shortenerLinkRepository.findOneByLongUrl(dto.getLongUrl());
 
-        if(shortenerLink.isPresent()){
-            return shortenerLink.map(s -> {
-                return Optional.of(new ShortenerLinkDTO(s));
-            }).get();
-        }else{
-            return save(dto);
-        }
+        return shortenerLink.map(s -> {
+            return Optional.of(new ShortenerLinkDTO(s));
+        }).orElseGet(() -> Optional.of(save(dto).get()));
     }
 
     @Override
