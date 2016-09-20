@@ -1,3 +1,3 @@
 # ShortenerLinkAPI
 
-This an API that make Shorts Urls
+This is an API that make Shorts Urls
